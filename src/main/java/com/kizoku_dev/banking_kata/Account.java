@@ -5,14 +5,14 @@ package com.kizoku_dev.banking_kata;
  */
 public class Account {
 
-    private long balance;
+    private double balance;
 
     /**
      * Instantiates a new Account.
      *
      * @param balance the initial balance
      */
-    public Account(long balance) {
+    public Account(double balance) {
         this.balance = balance;
     }
 
@@ -21,7 +21,7 @@ public class Account {
      *
      * @param money the money to add to balance
      */
-    public void deposit(long money) {
+    public void deposit(double money) {
         this.balance = this.balance + money;
     }
 
@@ -31,8 +31,8 @@ public class Account {
      * @param money the money to withdraw
      * @throws WithdrawException the withdraw exception
      */
-    public void withdraw(long money) throws WithdrawException {
-        long newBalance = this.balance - money;
+    public void withdraw(double money) throws WithdrawException {
+        double newBalance = this.balance - money;
         if (newBalance < 0) {
             throw new WithdrawException(WithdrawException.NOT_ENOUGH_MONEY);
         }
@@ -44,7 +44,7 @@ public class Account {
      *
      * @return the current balance
      */
-    public long getBalance() {
+    public double getBalance() {
         return this.balance;
     }
 }

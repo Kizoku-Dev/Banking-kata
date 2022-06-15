@@ -1,7 +1,8 @@
 package com.kizoku_dev.banking_kata;
 
-import static org.assertj.core.api.Assertions.*;
 import org.junit.jupiter.api.Test;
+
+import static org.assertj.core.api.Assertions.*;
 
 class AccountTest {
 
@@ -19,10 +20,24 @@ class AccountTest {
     }
 
     @Test
+    void testDepositDecimal() {
+        Account account = new Account(0);
+        account.deposit(1000.50);
+        assertThat(account.getBalance()).isEqualTo(1000.50, withPrecision(2d));
+    }
+
+    @Test
     void testWithdraw() {
         Account account = new Account(1500);
         assertThatNoException().isThrownBy(() -> account.withdraw(1000));
         assertThat(account.getBalance()).isEqualTo(500);
+    }
+
+    @Test
+    void testWithdrawDecimal() {
+        Account account = new Account(1500);
+        assertThatNoException().isThrownBy(() -> account.withdraw(1000.50));
+        assertThat(account.getBalance()).isEqualTo(499.50, withPrecision(2d));
     }
 
     @Test
